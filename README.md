@@ -5,7 +5,7 @@
 Prometheus Ping Exporter is a simple python script which utilize fping to probe endpoint through ICMP and parsing the output to Prometheus. The result can then be visualize through Grafana with ease.
 
 **Requirements**
-- Python 2.x
+- Python 3.x
 - fping 4.x
 
 **Screenshots**
@@ -16,6 +16,8 @@ For Debian user, you can get the fping deb file from http://ftp.debian.org/debia
 For docker user, you can build the container with the Docker file (based on alpine around 54M). For arm user, you can change FROM to "armhf/alpine:edge"
 
 PS: The script is working fine with > 40 ping target in a PI 3B.
+
+PPS: Making it work with python3 isn't really what anyone would call a rewrite, the modules required exist in python3, and some minimal decode/encode('utf') were required - 0x0ac
 
 ## Getting Started
 
@@ -38,6 +40,10 @@ PS: The script is working fine with > 40 ping target in a PI 3B.
 4. Testing The Script
 ```
 # curl "127.0.0.1:8085/?target=8.8.8.8"
+ping_avg 37.2
+ping_max 86.7
+ping_min  19.0
+ping_loss 0
 ```
 
 ### Running Script On System Startup
